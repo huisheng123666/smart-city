@@ -1,0 +1,12 @@
+@import './base.css';
+
+html, body{
+    overflow: hidden;
+}
+
+#webgl {
+    position: fixed;
+    left: 0;
+    top: 0;
+    outline: none;
+}
