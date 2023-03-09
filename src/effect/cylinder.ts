@@ -1,7 +1,6 @@
 import type {Scene} from "three";
 import type {UniformVar} from "@/effect/surroundLine";
 import * as THREE from "three";
-import {color} from "@/config";
 
 export class Cylinder {
   scene: Scene
