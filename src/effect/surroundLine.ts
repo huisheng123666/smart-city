@@ -92,6 +92,7 @@ export class SurroundLine {
     mesh.position.copy(this.child.position)
     mesh.rotation.copy(this.child.rotation)
     mesh.scale.copy(this.child.scale)
+    // mesh.castShadow = true
     this.scene.add(mesh)
   }
 

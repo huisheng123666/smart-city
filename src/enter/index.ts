@@ -15,9 +15,11 @@ export function initCity() {
 
   scene.add(new THREE.AmbientLight(0xadadadad))
 
-  const directionLight = new THREE.DirectionalLight(0xffffff)
+  const directionLight = new THREE.DirectionalLight(0xffffff, 1)
 
-  directionLight.position.set(0, 0, 0)
+  directionLight.position.set(0, 0, 1000)
+
+  directionLight.castShadow = true
 
   scene.add(directionLight)
 

@@ -7,6 +7,7 @@ import gsap from "gsap";
 import type {PerspectiveCamera} from "three";
 import {Radar} from "@/effect/radar";
 import {Wall} from "@/effect/wall";
+import {Circle} from "@/effect/circle";
 
 export class City {
   scene: Scene
@@ -43,6 +44,7 @@ export class City {
     new Background(this.scene)
     new Radar(this.scene, this.time)
     new Wall(this.scene, this.time)
+    new Circle(this.scene, this.time)
     // this.clickEvent()
   }
 

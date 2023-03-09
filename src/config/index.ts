@@ -5,5 +5,6 @@ export const color = {
   risingColor: '#5588aa',
   liveColor: '#ffffff',
   radarColor: '#ff8800',
-  wall: '#fab73f'
+  wall: '#fab73f',
+  circle: '#00bbff'
 }

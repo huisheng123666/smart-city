@@ -1,31 +1,31 @@
-import type { Scene } from "three";
+import type {Scene} from "three";
 import type {UniformVar} from "@/effect/surroundLine";
-import * as THREE from 'three'
-import {color} from "@/config";
 import {Cylinder} from "@/effect/cylinder";
+import {color} from "@/config";
 
-export class Wall {
+export class Circle {
   scene: Scene
 
   time: UniformVar
 
   config = {
     radius: 50,
-    height: 20,
-    open: true,
+    color: color.circle,
     opacity: 0.6,
-    color: color.wall,
+    height: 1,
+    open: false,
     position: {
-      x: 0,
+      x: 300,
       y: 0,
-      z: 0
+      z: 300
     },
-    speed: 2
+    speed: 2.0
   }
 
   constructor(scene: Scene, time: UniformVar) {
     this.scene = scene
     this.time = time
-    new Cylinder(this.scene, time).init(this.config)
+
+    new Cylinder(scene, time).init(this.config)
   }
 }
