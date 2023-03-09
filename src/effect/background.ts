@@ -5,7 +5,7 @@ export class Background {
   scene: Scene
 
   constructor(scene: Scene) {
-    this.url = '../../src/assets/white-bg.png'
+    this.url = '../../src/assets/black-bg.png'
     this.scene = scene
     this.init()
   }

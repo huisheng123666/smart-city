@@ -7,9 +7,9 @@ export function initCity() {
 
   const scene = new THREE.Scene()
 
-  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 100000)
+  const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 100, 100000)
 
-  camera.position.set(805, 705, -144)
+  camera.position.set(1018, 357, -24)
 
   scene.add(camera)
 
@@ -40,16 +40,16 @@ export function initCity() {
 
   const city = new City(scene, camera)
 
+  const clock = new THREE.Clock()
+
   const start = () => {
-    // console.log(camera)
-    city.start()
+    city.start(clock.getDelta())
     render.render(scene, camera)
     controls.update()
     camera.updateProjectionMatrix()
-    requestAnimationFrame(start)
   }
 
-  start()
+  render.setAnimationLoop(start)
 
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight

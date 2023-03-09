@@ -5,10 +5,20 @@ import {SurroundLine} from "@/effect/surroundLine";
 import {Background} from "@/effect/background";
 import gsap from "gsap";
 import type {PerspectiveCamera} from "three";
+import {Radar} from "@/effect/radar";
+import {Wall} from "@/effect/wall";
 
 export class City {
   scene: Scene
   camera: PerspectiveCamera
+
+  height = {
+    value: 5.0
+  }
+
+  time = {
+    value: 0.0
+  }
 
   constructor(scene: Scene, camera: PerspectiveCamera) {
     this.loadCity()
@@ -21,7 +31,9 @@ export class City {
       .then(object => {
         // console.log(object)
         object.traverse((child: any) => {
-          new SurroundLine(this.scene, child)
+          if (child.isMesh) {
+            new SurroundLine(this.scene, child, this.height, this.time)
+          }
         })
         this.initEffect()
       })
@@ -29,7 +41,8 @@ export class City {
 
   initEffect() {
     new Background(this.scene)
-
+    new Radar(this.scene, this.time)
+    new Wall(this.scene, this.time)
     // this.clickEvent()
   }
 
@@ -82,6 +95,12 @@ export class City {
     }
   }
 
-  start() {
+  start(delta: number) {
+    this.height.value += 0.4
+    if (this.height.value > 160) {
+      this.height.value = 5
+    }
+
+    this.time.value += delta
   }
 }
