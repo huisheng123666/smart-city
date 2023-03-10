@@ -6,5 +6,7 @@ export const color = {
   liveColor: '#ffffff',
   radarColor: '#ff8800',
   wall: '#fab73f',
-  circle: '#00bbff'
+  circle: '#00bbff',
+  ball: '#fab73f',
+  cone: '#ffff00'
 }

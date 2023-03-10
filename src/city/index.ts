@@ -1,3 +1,5 @@
+import { Cone } from './../effect/cone';
+import { Ball } from './../effect/ball';
 import {loadFBX} from "@/utils";
 import type { Scene } from "three";
 import * as THREE from 'three'
@@ -21,6 +23,12 @@ export class City {
     value: 0.0
   }
 
+  top = {
+    value: 5.0
+  }
+
+  flag = false
+
   constructor(scene: Scene, camera: PerspectiveCamera) {
     this.loadCity()
     this.scene = scene
@@ -28,7 +36,7 @@ export class City {
   }
 
   loadCity() {
-    loadFBX('/src/models/beijing.fbx')
+    loadFBX('/beijing.fbx')
       .then(object => {
         // console.log(object)
         object.traverse((child: any) => {
@@ -45,6 +53,9 @@ export class City {
     new Radar(this.scene, this.time)
     new Wall(this.scene, this.time)
     new Circle(this.scene, this.time)
+    new Ball(this.scene, this.time)
+    new Cone(this.scene, this.top, this.height)
+
     // this.clickEvent()
   }
 
@@ -104,5 +115,11 @@ export class City {
     }
 
     this.time.value += delta
+
+    if (this.top.value > 15 || this.top.value < 0) {
+      this.flag = !this.flag
+    }
+    this.top.value += this.flag ? -0.4 : 0.4
+
   }
 }

@@ -10,7 +10,7 @@ export class Wall {
 
   config = {
     radius: 50,
-    height: 20,
+    height: 40,
     open: true,
     opacity: 0.6,
     color: color.wall,
