@@ -8,5 +8,6 @@ export const color = {
   wall: '#fab73f',
   circle: '#00bbff',
   ball: '#fab73f',
-  cone: '#ffff00'
+  cone: '#ffff00',
+  fly: '#00bbff'
 }

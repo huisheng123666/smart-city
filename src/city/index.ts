@@ -10,6 +10,7 @@ import type {PerspectiveCamera} from "three";
 import {Radar} from "@/effect/radar";
 import {Wall} from "@/effect/wall";
 import {Circle} from "@/effect/circle";
+import {Fly} from "@/effect/fly";
 
 export class City {
   scene: Scene
@@ -55,6 +56,7 @@ export class City {
     new Circle(this.scene, this.time)
     new Ball(this.scene, this.time)
     new Cone(this.scene, this.top, this.height)
+    new Fly(this.scene, this.time)
 
     // this.clickEvent()
   }

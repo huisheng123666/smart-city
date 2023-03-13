@@ -16,7 +16,7 @@ export class Ball {
       color: color.ball,
       height: 60,
       opacity: 0.6,
-      speed: 4.0,
+      speed: 1.0,
       position: {
         x: 300,
         y: 0,
