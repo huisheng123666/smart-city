@@ -1,5 +1,5 @@
-import { Cone } from './../effect/cone';
-import { Ball } from './../effect/ball';
+import { Cone } from '@/effect/cone';
+import { Ball } from '@/effect/ball';
 import {loadFBX} from "@/utils";
 import type { Scene } from "three";
 import * as THREE from 'three'
@@ -11,6 +11,8 @@ import {Radar} from "@/effect/radar";
 import {Wall} from "@/effect/wall";
 import {Circle} from "@/effect/circle";
 import {Fly} from "@/effect/fly";
+import {Road} from "@/effect/road";
+import {Font} from "@/effect/font";
 
 export class City {
   scene: Scene
@@ -57,7 +59,8 @@ export class City {
     new Ball(this.scene, this.time)
     new Cone(this.scene, this.top, this.height)
     new Fly(this.scene, this.time)
-
+    new Road(this.scene, this.time)
+    new Font(this.scene)
     // this.clickEvent()
   }
 
