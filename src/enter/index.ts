@@ -44,6 +44,12 @@ export function initCity() {
 
   const clock = new THREE.Clock()
 
+  if (import.meta.env.DEV) {
+    const axesHelper = new THREE.AxesHelper(100)
+
+    scene.add(axesHelper)
+  }
+
   const start = () => {
     city.start(clock.getDelta())
     render.render(scene, camera)

@@ -13,6 +13,7 @@ import {Circle} from "@/effect/circle";
 import {Fly} from "@/effect/fly";
 import {Road} from "@/effect/road";
 import {Font} from "@/effect/font";
+import {Snow} from "@/effect/snow";
 
 export class City {
   scene: Scene
@@ -31,6 +32,8 @@ export class City {
   }
 
   flag = false
+
+  effect: any = {};
 
   constructor(scene: Scene, camera: PerspectiveCamera) {
     this.loadCity()
@@ -61,6 +64,8 @@ export class City {
     new Fly(this.scene, this.time)
     new Road(this.scene, this.time)
     new Font(this.scene)
+    this.effect.snow = new Snow(this.scene)
+
     // this.clickEvent()
   }
 
@@ -114,6 +119,10 @@ export class City {
   }
 
   start(delta: number) {
+    for (const key in this.effect) {
+      this.effect[key] && this.effect[key].animation()
+    }
+
     this.height.value += 0.4
     if (this.height.value > 160) {
       this.height.value = 5
