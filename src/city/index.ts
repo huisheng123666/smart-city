@@ -14,6 +14,8 @@ import {Fly} from "@/effect/fly";
 import {Road} from "@/effect/road";
 import {Font} from "@/effect/font";
 import {Snow} from "@/effect/snow";
+import { Rain } from '@/effect/rain'
+import { Smoke } from '@/effect/smoke'
 
 export class City {
   scene: Scene
@@ -55,16 +57,19 @@ export class City {
   }
 
   initEffect() {
-    new Background(this.scene)
-    new Radar(this.scene, this.time)
-    new Wall(this.scene, this.time)
-    new Circle(this.scene, this.time)
-    new Ball(this.scene, this.time)
-    new Cone(this.scene, this.top, this.height)
-    new Fly(this.scene, this.time)
-    new Road(this.scene, this.time)
-    new Font(this.scene)
-    this.effect.snow = new Snow(this.scene)
+    // new Background(this.scene)
+    // new Radar(this.scene, this.time)
+    // new Wall(this.scene, this.time)
+    // new Circle(this.scene, this.time)
+    // new Ball(this.scene, this.time)
+    // new Cone(this.scene, this.top, this.height)
+    // new Fly(this.scene, this.time)
+    // new Road(this.scene, this.time)
+    // new Font(this.scene)
+    // // this.effect.snow = new Snow(this.scene)
+    // this.effect.rain = new Rain(this.scene)
+
+    this.effect.smoke = new Smoke(this.scene)
 
     // this.clickEvent()
   }

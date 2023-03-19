@@ -56,13 +56,27 @@ export class SurroundLine {
         },
         u_size: {
           value: size
-        }
+        },
+        u_time: this.time
       },
+      // lights: true,
       vertexShader: `
+                uniform float u_time;
                 varying vec3 v_position;
                 void main() {
+                  float uMax = 4.0;
                   v_position = position;
-                  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                  
+                  float rate = u_time / uMax * 2.0;
+                  
+                  // 建筑物生长边界
+                  if (rate > 1.0) {
+                    rate = 1.0;
+                  }
+                  
+                  float z = position.z * rate;
+                  
+                  gl_Position = projectionMatrix * modelViewMatrix * vec4(position.x, position.y, z, 1.0);
                 }
               `,
       fragmentShader: `
@@ -130,6 +144,15 @@ export class SurroundLine {
           
         void main() {
         
+          float uMax = 4.0;
+          float rate = u_time / uMax * 2.0;
+                  
+          // 建筑物生长边界
+          if (rate > 1.0) {
+            rate = 1.0;
+          }
+          float z = position.z * rate;
+        
           // 扫描速度
           float new_time = mod(u_time * 0.1, 1.0);
           // 扫描位置
@@ -146,7 +169,7 @@ export class SurroundLine {
             v_color = line_color;
           }
           
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position.x, position.y, z, 1.0);
         }
       `,
       fragmentShader: `
